@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MUAHO.Views.SearchPage"
+             xmlns:local ="clr-namespace:MUAHO.Behavior"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:custom="clr-namespace:MUAHO.Views.CustomView">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource ButtonSmallColor3}">
+            <StackLayout Orientation="Horizontal" HeightRequest="35"
+                         Margin="20,20,20,0">
+                <Frame HorizontalOptions="Start"
+                           WidthRequest="30"
+                           HeightRequest="25"
+                           Padding="5"
+                           Margin="0,0,10,0"
+                           CornerRadius="10">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SwitchBeforePage}"/>
+                    </Frame.GestureRecognizers>
+                    <Image Source="ic_back.png" />
+                </Frame>
+                <Frame Padding="5"
+                       CornerRadius="10" 
+                           WidthRequest="280"
+                       HorizontalOptions="EndAndExpand">
+                    <StackLayout 
+                        Orientation="Horizontal"
+                        
+                        HorizontalOptions="Center"
+                        >
+                        <Image Source="ic_search4.png"
+                              
+                               WidthRequest="20"/>
+                        <custom:CustomEntry Placeholder="Bạn muốn tìm gì?" FontSize="13">
+                            <custom:CustomEntry.Behaviors>
+                                <local:SearchValidateBehavior/>
+                            </custom:CustomEntry.Behaviors>
+                        </custom:CustomEntry>
+
+
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <Label 
+                Text="Mặt hàng thường mua" 
+                TextColor="{StaticResource ButtonBigColor}" 
+                FontSize="16" FontFamily="FontSemiBold"
+                Margin="20,20,20,10"/>
+            <ScrollView Orientation="Horizontal"
+                        HorizontalScrollBarVisibility="Never">
+                <StackLayout Orientation="Horizontal" Padding="20,0,20,0" Spacing="10">
+                    <Button WidthRequest="90" HeightRequest="35" Text="Áo thun" FontSize="13"
+                            TextTransform="None" TextColor="{StaticResource PlaceholderColor}"
+                            FontFamily="FontSemiBold"
+                            BorderColor="{StaticResource PlaceholderColor}" BorderWidth="1"
+                            BackgroundColor="#F6EADF"
+                            CornerRadius="10" Padding="-10"
+                            />
+                    <Button WidthRequest="90" HeightRequest="35" Text="Thịt Bò" FontSize="13"
+                            TextTransform="None" TextColor="{StaticResource PlaceholderColor}"
+                            FontFamily="FontSemiBold"
+                            BorderColor="{StaticResource PlaceholderColor}" BorderWidth="1"
+                            BackgroundColor="#F6EADF"
+                            CornerRadius="10" Padding="-10"
+                            />
+                    <Button WidthRequest="90" HeightRequest="35" Text="Thịt Heo" FontSize="13"
+                            TextTransform="None" TextColor="{StaticResource PlaceholderColor}"
+                            FontFamily="FontSemiBold"
+                            BorderColor="{StaticResource PlaceholderColor}" BorderWidth="1"
+                            BackgroundColor="#F6EADF"
+                            CornerRadius="10" Padding="-10"
+                            />
+                    <Button WidthRequest="90" HeightRequest="35" Text="Giày Nữ" FontSize="13"
+                            TextTransform="None" TextColor="{StaticResource PlaceholderColor}"
+                            FontFamily="FontSemiBold"
+                            BorderColor="{StaticResource PlaceholderColor}" BorderWidth="1"
+                            BackgroundColor="#F6EADF"
+                            CornerRadius="10" Padding="-10"
+                            />
+                    <Button WidthRequest="90" HeightRequest="35" Text="Giày Nam" FontSize="13"
+                            TextTransform="None" TextColor="{StaticResource PlaceholderColor}"
+                            FontFamily="FontSemiBold"
+                            BorderColor="{StaticResource PlaceholderColor}" BorderWidth="1"
+                            BackgroundColor="#F6EADF"
+                            CornerRadius="10" Padding="-10"
+                            />
+                </StackLayout>
+            </ScrollView>
+            <Label 
+                Text="Cửa hàng nổi bật" 
+                TextColor="{StaticResource ButtonBigColor}" 
+                FontSize="16" FontFamily="FontSemiBold"
+                Margin="20,20,20,10"/>
+            <CollectionView x:Name="listStore" Margin="10,0,15,0"
+                            HorizontalScrollBarVisibility="Never"
+                            ItemsUpdatingScrollMode="KeepScrollOffset" ItemsSource="{Binding StoreFavorites}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                     Span="2" VerticalItemSpacing="20"
+                                     HorizontalItemSpacing="10">
+
+                    </GridItemsLayout>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Image Source="{Binding ImageStore}"
+                                   HorizontalOptions="Center"
+                                   WidthRequest="150" HeightRequest="150" Aspect="AspectFill">
+                                <Image.Clip>
+                                    <RoundRectangleGeometry CornerRadius="20" 
+                                                            Rect="0,0,150,150"/>
+                                </Image.Clip>
+                            </Image>
+                            <Label Text="{Binding NameStore}" 
+                                   HorizontalTextAlignment="Center" 
+                                   WidthRequest="150"
+                                   FontFamily="FontBold" 
+                                   TextColor="{StaticResource MainTextColor}"/>
+                            <Label Text="{Binding AdressStore}"
+                                   LineBreakMode="TailTruncation"
+                                   MaxLines="2"
+                                   HorizontalTextAlignment="Center"
+                                   HorizontalOptions="Center"
+                                   WidthRequest="150" 
+                                   FontSize="12"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MUAHO.Views.ChildPages.CalendarPage"
+             xmlns:custom="clr-namespace:MUAHO.Views.CustomView"
+             >
+
+
+<StackLayout Orientation="Horizontal" Padding="20,20,20,0">
+            <Label Text="Lịch mua sắm" 
+                HorizontalOptions="StartAndExpand"
+                   FontFamily="FontBold"
+                   TextColor="{StaticResource TitlePageColor}"
+                   FontSize="25"/>
+        <Frame WidthRequest="120" HeightRequest="40"
+               Padding="0"
+               BackgroundColor="{StaticResource ButtonBigColor}"
+               CornerRadius="10"
+               HorizontalOptions="End">
+            <StackLayout Padding="10" Orientation="Horizontal">
+                <Label Text="Tạo lịch" TextColor="White" FontFamily="FontBold"
+                       VerticalOptions="CenterAndExpand"
+                       FontSize="14"
+                       HorizontalOptions="StartAndExpand"/>
+                <Image Source="ic_calendar1.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="End"/>
+            </StackLayout>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SwitchToStorePage}"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+        </StackLayout>
+    <StackLayout Orientation="Horizontal"
+                 Padding="20,20,20,10">
+        <Label Text="Tất cả" 
+                HorizontalOptions="StartAndExpand"
+                   FontFamily="FontSemiBold"
+                   TextColor="Black"
+                   FontSize="20"/>
+        <Frame WidthRequest="100" HeightRequest="32"
+               Padding="0"
+               BackgroundColor="White"
+               CornerRadius="18"
+               BorderColor="{StaticResource PlaceholderColor}"
+               HorizontalOptions="End">
+            <custom:CustomPicker x:Name="picker"
+                     Title="Sắp xếp theo"
+                    FontSize="10"
+                                 ItemsSource="{Binding ListFilter}"
+                    HorizontalOptions="Center"
+                                 Margin="0,2,0,-2"
+                                 
+                                 VerticalOptions="Center"
+                     BackgroundColor="Transparent"
+                    FontFamily="FontSemiBold"
+                    TitleColor="{StaticResource MainTextColor}">
+
+            </custom:CustomPicker>
+        </Frame> 
+    </StackLayout>
+    <ListView x:Name="listCalendarProducts"
+              RowHeight="120"
+              SeparatorVisibility="None"
+              ItemsSource="{Binding CalendarProducts}"
+              
+              >
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <SwipeView x:Name="CalendarProduct"
+                               Padding="20,5,0,5"
+                               BackgroundColor="White"
+                               >
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem 
+                                       BackgroundColor="LightGreen"
+                                       IconImageSource="ic_view.png" />
+                                <SwipeItem 
+                                       BackgroundColor="LightPink"
+                                       IconImageSource="ic_delete.png"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <!-- Content -->
+                        <StackLayout Orientation="Horizontal"
+                                     >
+                            <Frame WidthRequest="110" HeightRequest="100" CornerRadius="20"
+                               HorizontalOptions="Start"
+                               Padding="0">
+                                <Image Source="{Binding Image}" Aspect="AspectFill"/>
+                            </Frame>
+                            <StackLayout Margin="10,0,0,0">
+                                <Label Text="{Binding NameProduct}" TextColor="{StaticResource ButtonSmallColor2}" 
+                                       FontFamily="FontBold"
+                                       FontSize="16"/>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Price}" TextColor="Black"
+                                           FontSize="23"  FontFamily="FontBold"/>
+                                    <Label Text="{Binding Note}" VerticalOptions="Center" TextColor="Black"/>
+                                </StackLayout>
+                                <Label Text="{Binding Schedule}" FontSize="12" TextColor="Black"/>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Time}" FontSize="12" TextColor="Black"/>
+                                    <Label Text=" * " TextColor="Red"/>
+                                    <Label Text="{Binding Date}" FontSize="12" TextColor="Black"/>
+                                </StackLayout>
+                            </StackLayout>
+                            
+                        </StackLayout>
+                        <SwipeView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BindingContext.SwitchItem, Source={x:Reference listCalendarProducts}}"
+                                                  CommandParameter="{Binding Source={x:Reference CalendarProduct}, Path=BindingContext}"/>
+                        </SwipeView.GestureRecognizers>
+                    </SwipeView>
+                    
+                </ViewCell>
+                
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</StackLayout>
