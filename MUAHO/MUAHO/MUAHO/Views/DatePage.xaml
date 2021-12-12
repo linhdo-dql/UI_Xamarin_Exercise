@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MUAHO.Views.DatePage"
+             xmlns:fRating="clr-namespace:Rating;assembly=Rating"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:calendar="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar"
+              xmlns:tabview="clr-namespace:Xam.Plugin.TabView;assembly=Xam.Plugin.TabView"
+             xmlns:control ="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:custom="clr-namespace:MUAHO.Views.CustomView"
+             xmlns:local ="clr-namespace:MUAHO.Views.DateChildPage.Calendar">
+    <ContentPage.Resources>
+        <ControlTemplate x:Key="FrameRadioTemplate">
+            <Frame Padding="0" CornerRadius="15" VerticalOptions="Start"
+               HeightRequest="30" WidthRequest="30" HorizontalOptions="Start">
+
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CheckedStates">
+                        <VisualState x:Name="Checked">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="#F2985A"/>
+                                <Setter Property="BorderColor" Value="Transparent"/>
+                            </VisualState.Setters>
+                        </VisualState>
+
+                        <VisualState x:Name="Unchecked">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="White"/>
+                                <Setter Property="BorderColor" Value="#40929292"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+
+                </VisualStateManager.VisualStateGroups>
+
+                <Grid Margin="4" WidthRequest="100">
+                    <ContentPresenter/>
+                </Grid>
+            </Frame>
+        </ControlTemplate>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackLayout
+                Grid.Row="0"
+                BackgroundColor="White">
+                <StackLayout 
+                         Orientation="Horizontal" HeightRequest="35"
+                         Padding="0,0,0,30"
+                         Margin="20,30,20,0">
+                    <Frame HorizontalOptions="Start"
+                           WidthRequest="25"
+                           HeightRequest="25"
+                           Padding="5"
+                           Margin="0,0,10,0"
+                           CornerRadius="10">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_5"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="ic_back.png" />
+                    </Frame>
+                    <Label Text="NGÀY - GIỜ GIAO" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource ButtonBigColor}" 
+                       FontSize="15"
+                           Margin="-15,0,0,0"
+                       FontFamily="FontBold"
+                       VerticalOptions="Center"/>
+
+                </StackLayout>
+                
+            </StackLayout>
+            
+            <tabview:TabViewControl Grid.Row="1"
+                                    Margin="0,-20,0,0"
+                HeaderBackgroundColor="White"
+                HeaderSelectionUnderlineColor="{StaticResource ButtonBigColor}"
+                                    HeaderSelectionUnderlineWidth="150"
+                HeaderTabTextColor="{StaticResource PlaceholderColor}"
+                HeaderTabTextFontFamily="FontSemiBold"
+                HorizontalOptions="FillAndExpand"
+                IsSwipeEnabled="False"
+                IsClippedToBounds="True"
+                HeaderSelectionUnderlineThickness="1.6"
+                VerticalOptions="FillAndExpand">
+                <tabview:TabViewControl.ItemSource>
+                    <tabview:TabItem HeaderText="Tùy chọn" IsCurrent="True">
+                        
+                            <AbsoluteLayout Padding="0,10,0,0">
+                            <ScrollView Orientation="Vertical" Scrolled="ScrollView_Scrolled"
+                                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                     AbsoluteLayout.LayoutFlags="All">
+                                <StackLayout Orientation="Vertical" Padding="0,0,0,100">
+                                    <StackLayout Orientation="Horizontal" Margin="20,0,20,0">
+                                        <Label x:Name="lblTitle" Text="Tháng 12, 2021" FontSize="16" FontFamily="FontBold" Padding="0,20,0,20" />
+                                        <ImageButton x:Name="btnPrev"
+                                 Source="ic_arrow_left.png" WidthRequest="10" HeightRequest="10" BackgroundColor="Transparent"
+                                 HorizontalOptions="EndAndExpand" Clicked="btnPrev_Clicked" Margin="0,0,40,0"/>
+                                        <ImageButton x:Name="btnNext"
+                                 Source="ic_arrow_right.png" WidthRequest="10" HeightRequest="15" BackgroundColor="Transparent"
+                                 HorizontalOptions="End" Clicked="btnNext_Clicked"/>
+                                    </StackLayout>
+                                    <Grid Margin="20,0,20,10" ColumnSpacing="7">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="T2" Grid.Column="0" FontFamily="FontSemiBold" HorizontalOptions="Center" TextColor="Black"/>
+                                        <Label Text="T3" Grid.Column="1" FontFamily="FontSemiBold" HorizontalOptions="Center" TextColor="Black"/>
+                                        <Label Text="T4" Grid.Column="2" FontFamily="FontSemiBold" HorizontalOptions="Center" TextColor="Black"/>
+                                        <Label Text="T5" Grid.Column="3" FontFamily="FontSemiBold" HorizontalOptions="Center" TextColor="Black"/>
+                                        <Label Text="T6" Grid.Column="4" FontFamily="FontSemiBold" HorizontalOptions="Center" TextColor="Black"/>
+                                        <Label Text="T7" Grid.Column="5" FontFamily="FontSemiBold" HorizontalOptions="Center" TextColor="Black"/>
+                                        <Label Text="CN" Grid.Column="6" FontFamily="FontSemiBold" HorizontalOptions="Center" TextColor="Black"/>
+                                    </Grid>
+                                    <Grid x:Name="gridDay" Padding="20,10,20,10" ColumnSpacing="18" RowSpacing="8" BackgroundColor="{StaticResource ButtonSmallColor3}"/>
+                                    <StackLayout Grid.Row="2">
+                                        <StackLayout>
+                                            <StackLayout Orientation="Horizontal" Padding="20,20,20,0">
+                                                <Label Text="Vào lúc" TextColor="{StaticResource PlaceholderColor}" FontSize="17" FontFamily="FontBold" Margin="0,10,0,10"/>
+                                   
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal" Margin="20,0,20,0">
+                                                <Frame
+                                                   Padding="0"
+                                                   BackgroundColor="{StaticResource ButtonSmallColor2}"
+                                                   CornerRadius="10"
+                                                   HorizontalOptions="StartAndExpand">
+                                                    <StackLayout Padding="10,0,10,0" 
+                                                                 WidthRequest="130"
+                                                                 Orientation="Horizontal">
+                                                        <custom:CustomTimePicker
+                                                            x:Name="timepicker0"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            TextColor="White"
+                                                            FontSize="15" Margin="0,0,10,0" InputTransparent="True"
+                                                            PropertyChanged="timepicker0_PropertyChanged">
+                                                        </custom:CustomTimePicker>
+                                                        <Image Source="ic_clock2.png" WidthRequest="20" HeightRequest="20" HorizontalOptions="End"/>
+                                                    </StackLayout>
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4"/>
+                                                    </Frame.GestureRecognizers>
+                                                </Frame>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="3" Margin="20,20,20,0">
+                                        <StackLayout>
+                                            <StackLayout Orientation="Horizontal" >
+                                                <Label Text="Ghi chú" TextColor="{StaticResource PlaceholderColor}" FontSize="17" FontFamily="FontBold" Margin="0,10,0,10"/>
+                                                
+                                            </StackLayout>
+                                            <Frame
+                                                BackgroundColor="#20929292"
+                                                CornerRadius="10"
+                                                Padding="10,10,10,10">
+
+                                                <custom:CustomEditor Text="Riêng ngày thứ 7 giao vào 9:00" 
+                                                        TextColor="{StaticResource ButtonSmallColor2}"
+                                                                     x:Name="entry1"
+                                                                    HeightRequest="150"
+                                                                     TextChanged="CustomEditor_TextChanged_1"
+                                                        MinimumHeightRequest="100" 
+                                                        FontSize="15"
+                                                        />
+                                            </Frame>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                              
+                                
+                            </ScrollView>
+                            <Frame
+                                x:Name="bigFrame"
+                               AbsoluteLayout.LayoutBounds="0,0.96,1,125"  
+                               BackgroundColor="#F6EADF"
+                               Margin="20,0,20,0"
+                               CornerRadius="25"
+                               Padding="0"
+                               AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional">
+                                <Frame.Content>
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Tổng hóa đơn:" Margin="15,10,10,10" FontSize="13" FontFamily="FontSemiBold"/>
+                                            <Label Text="{Binding PriceItem}" Margin="15,10,0,10" FontSize="18" TextColor="{StaticResource ButtonBigColor}"
+                                               FontFamily="FontBold" 
+                                               HorizontalOptions="EndAndExpand"/>
+                                            <ImageButton 
+                                                     Source="ic_arrow2.png" WidthRequest="10" HeightRequest="10" BackgroundColor="Transparent"
+                                                     HorizontalOptions="End" Margin="0,0,10,0"/>
+                                        </StackLayout>
+
+                                    </StackLayout>
+                                </Frame.Content>
+
+                            </Frame>
+                            <Frame 
+                               x:Name="smallFrame"
+                               BackgroundColor="{StaticResource ButtonBigColor}" Padding="0"
+                               AbsoluteLayout.LayoutBounds="0,0.96,1,85" 
+                               Margin="20,0,20,0"
+                               AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                               CornerRadius="25">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="CenterAndExpand">
+                                        <Label Text="Tất cả" Margin="25,10,10,10" FontSize="13" TextColor="White"/>
+                                        <Switch Margin="0,-10,0,0"></Switch>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="EndAndExpand"
+                                 VerticalOptions="Center"
+                                 Margin="20">
+                                        <Label Text="Thanh toán đơn hàng" Margin="15,10,0,10" FontSize="15" TextColor="White" FontFamily="FontSemiBold"/>
+                                        <Image Source="ic_next2.png" WidthRequest="20" HeightRequest="20" VerticalOptions="CenterAndExpand" Margin="0,7,0,0"/>
+                                    </StackLayout>
+                                </StackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding DynamicCalendarProduct}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </AbsoluteLayout>
+                       
+                    </tabview:TabItem>
+                    <tabview:TabItem HeaderText="Cố định">
+                        <AbsoluteLayout Padding="0,10,0,0">
+                                <ScrollView Orientation="Vertical" 
+                                            x:Name="ScrollView2"
+                                            Scrolled="ScrollView2_Scrolled"
+                                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                     AbsoluteLayout.LayoutFlags="All">
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.3*"/>
+                                        <RowDefinition Height="0.2*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <StackLayout Grid.Row="0">
+                                        <StackLayout>
+                                            <StackLayout Orientation="Horizontal" Padding="20,10,20,0">
+                                                <Label Text="Chọn ngày" TextColor="{StaticResource PlaceholderColor}" FontSize="17" FontFamily="FontBold" Margin="0,10,0,10"/>
+                                 
+                                            </StackLayout>
+                                            <Grid Padding="20,0,20,10"
+                              HorizontalOptions="Center"
+                              ColumnSpacing="10">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="40"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="40"/>
+                                                    <ColumnDefinition Width="40"/>
+                                                    <ColumnDefinition Width="40"/>
+                                                    <ColumnDefinition Width="40"/>
+                                                    <ColumnDefinition Width="40"/>
+                                                    <ColumnDefinition Width="40"/>
+                                                    <ColumnDefinition Width="40"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <RadioButton
+                                x:Name="T2"
+                                Grid.Column="0"
+                                GroupName="T2"
+                                CheckedChanged="OnCheckedChange"
+                                ControlTemplate="{StaticResource FrameRadioTemplate}">
+                                                    <RadioButton.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                                    </RadioButton.GestureRecognizers>
+                                                    <RadioButton.Content>
+                                                        <Label Text="T2" FontSize="15"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                                    </RadioButton.Content>
+                                                </RadioButton>
+
+                                                <RadioButton 
+                                x:Name="T3"
+                                Grid.Column="1"
+                                GroupName="T3"
+                                CheckedChanged="OnCheckedChange"
+                                ControlTemplate="{StaticResource FrameRadioTemplate}">
+                                                    <RadioButton.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                                    </RadioButton.GestureRecognizers>
+                                                    <RadioButton.Content>
+                                                        <Label Text="T3" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                                    </RadioButton.Content>
+                                                </RadioButton>
+
+                                                <RadioButton
+                                Grid.Column="2"
+                                GroupName="T4"
+                                CheckedChanged="OnCheckedChange"
+                                ControlTemplate="{StaticResource FrameRadioTemplate}">
+                                                    <RadioButton.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                                    </RadioButton.GestureRecognizers>
+                                                    <RadioButton.Content>
+                                                        <Label Text="T4" FontSize="15"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                                    </RadioButton.Content>
+                                                </RadioButton>
+
+                                                <RadioButton 
+                                Grid.Column="3"
+                                GroupName="T5"
+                                CheckedChanged="OnCheckedChange"
+                                ControlTemplate="{StaticResource FrameRadioTemplate}">
+                                                    <RadioButton.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                                    </RadioButton.GestureRecognizers>
+                                                    <RadioButton.Content>
+                                                        <Label Text="T5" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                                    </RadioButton.Content>
+                                                </RadioButton>
+
+                                                <RadioButton
+                                Grid.Column="4"
+                                GroupName="T6"
+                                CheckedChanged="OnCheckedChange"
+                                ControlTemplate="{StaticResource FrameRadioTemplate}">
+                                                    <RadioButton.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                                    </RadioButton.GestureRecognizers>
+                                                    <RadioButton.Content>
+                                                        <Label Text="T6" FontSize="15"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                                    </RadioButton.Content>
+                                                </RadioButton>
+
+                                                <RadioButton 
+                                Grid.Column="5"
+                                GroupName="T7"
+                                CheckedChanged="OnCheckedChange"
+                                ControlTemplate="{StaticResource FrameRadioTemplate}">
+                                                    <RadioButton.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                                    </RadioButton.GestureRecognizers>
+                                                    <RadioButton.Content>
+                                                        <Label Text="T7" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                                    </RadioButton.Content>
+                                                </RadioButton>
+
+                                                <RadioButton
+                                Grid.Column="6"
+                                GroupName="CN"
+                                CheckedChanged="OnCheckedChange"
+                                ControlTemplate="{StaticResource FrameRadioTemplate}">
+                                                    <RadioButton.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                                    </RadioButton.GestureRecognizers>
+                                                    <RadioButton.Content>
+                                                        <Label Text="CN" FontSize="15"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                                    </RadioButton.Content>
+                                                </RadioButton>
+
+
+
+                                            </Grid>
+                                            <StackLayout Orientation="Horizontal" Margin="20,0,20,0">
+                                                   
+                                                <Frame
+                           Padding="0"
+                           BackgroundColor="{StaticResource ButtonSmallColor2}"
+                           CornerRadius="10"
+                           HorizontalOptions="Start">
+                                                    <StackLayout Padding="10,0,10,0"
+                                              WidthRequest="130"
+                                             Orientation="Horizontal">
+                                                        <custom:CustomDatePicker 
+                                                            x:Name="datepicker1"
+                                                            Format="dd/MM/yyyy"
+                                                            DateSelected="datepicker1_DateSelected"
+                                        HorizontalOptions="StartAndExpand"
+                                        TextColor="White"
+                                        FontSize="15" Margin="0,0,10,0" InputTransparent="True">
+
+                                                        </custom:CustomDatePicker>
+                                                        <Image Source="ic_calendar1.png" WidthRequest="20" HeightRequest="20" HorizontalOptions="End"
+                                                               />
+                                                    </StackLayout>
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
+                                                    </Frame.GestureRecognizers>
+                                                </Frame>
+                                                <Image Source="ic_next.png" WidthRequest="20" HorizontalOptions="CenterAndExpand"/>
+
+                                                <Frame
+                           Padding="0"
+                           BackgroundColor="{StaticResource ButtonSmallColor2}"
+                           CornerRadius="10"
+                           HorizontalOptions="End">
+                                                    <StackLayout Padding="10,0,10,0" 
+                                              WidthRequest="130"
+                                             Orientation="Horizontal">
+                                                        <custom:CustomDatePicker
+                                                            x:Name="datepicker2"
+                                        TextColor="White"
+                                                             Format="dd/MM/yyyy"
+                                        FontSize="15" InputTransparent="True"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            DateSelected="CustomDatePicker_DateSelected">
+
+                                                        </custom:CustomDatePicker>
+                                                        <Image Source="ic_calendar1.png" WidthRequest="20" HeightRequest="20" HorizontalOptions="End"/>
+                                                    </StackLayout>
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                                                    </Frame.GestureRecognizers>
+                                                </Frame>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="1">
+                                        <StackLayout>
+                                            <StackLayout Orientation="Horizontal" Padding="20,0,20,0">
+                                                <Label Text="Vào lúc" TextColor="{StaticResource PlaceholderColor}" FontSize="17" FontFamily="FontBold" Margin="0,10,0,10"/>
+
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal" Margin="20,0,20,0">
+                                                <Frame
+                                                   Padding="0"
+                                                   BackgroundColor="{StaticResource ButtonSmallColor2}"
+                                                   CornerRadius="10"
+                                                   HorizontalOptions="End">
+                                                    <StackLayout Padding="10,0,10,0" 
+                                                                 WidthRequest="130"
+                                                                 Orientation="Horizontal">      
+                                                        <custom:CustomTimePicker
+                                                            x:Name="timepicker"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            TextColor="White"
+                                                            FontSize="15" Margin="0,0,10,0" InputTransparent="True"
+                                                            PropertyChanged ="timepicker_PropertyChanged">
+                                                        </custom:CustomTimePicker>
+                                                        <Image Source="ic_clock2.png" WidthRequest="20" HeightRequest="20" HorizontalOptions="End"/>
+                                                    </StackLayout>
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
+                                                    </Frame.GestureRecognizers>
+                                                </Frame>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Row="2" Margin="20,0,20,0">
+                                        <StackLayout>
+                                            <StackLayout Orientation="Horizontal" >
+                                                <Label Text="Ghi chú" TextColor="{StaticResource PlaceholderColor}" FontSize="17" FontFamily="FontBold" Margin="0,10,0,10"/>
+
+                                            </StackLayout>
+                                            <Frame
+                                                BackgroundColor="#20929292"
+                                                CornerRadius="10"
+                                                Padding="10,10,10,10">
+
+                                                <custom:CustomEditor Text="Riêng ngày thứ 7 giao vào 9:00" 
+                                                        TextColor="{StaticResource ButtonSmallColor2}"
+                                                                    HeightRequest="150"
+                                                        MinimumHeightRequest="200"
+                                                        FontSize="15"
+                                                                     x:Name="entry2"
+                                                                     TextChanged="CustomEditor_TextChanged"
+                                                        />
+                                            </Frame>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Grid>
+
+                            </ScrollView>
+                                <Frame
+                                x:Name="bigFrame2"
+                               AbsoluteLayout.LayoutBounds="0,0.96,1,125"  
+                               BackgroundColor="#F6EADF"
+                               Margin="20,0,20,0"
+                               CornerRadius="25"
+                               Padding="0"
+                               AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional">
+                                    <Frame.Content>
+                                        <StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="Tổng hóa đơn:" Margin="15,10,10,10" FontSize="13" FontFamily="FontSemiBold"/>
+                                            <Label Text="{Binding PriceItem}" Margin="15,10,0,10" FontSize="18" TextColor="{StaticResource ButtonBigColor}"
+                                               FontFamily="FontBold" 
+                                               HorizontalOptions="EndAndExpand"/>
+                                                <ImageButton 
+                                                     Source="ic_arrow2.png" WidthRequest="10" HeightRequest="10" BackgroundColor="Transparent"
+                                                     HorizontalOptions="End" Margin="0,0,10,0"/>
+                                            </StackLayout>
+
+                                        </StackLayout>
+                                    </Frame.Content>
+
+                                </Frame>
+                                <Frame 
+                               x:Name="smallFrame2"
+                               BackgroundColor="{StaticResource ButtonBigColor}" Padding="0"
+                               AbsoluteLayout.LayoutBounds="0,0.96,1,85" 
+                               Margin="20,0,20,0"
+                               AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                               CornerRadius="25">
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="CenterAndExpand">
+                                            <Label Text="Tất cả" Margin="25,10,10,10" FontSize="13" TextColor="White"/>
+                                            <Switch Margin="0,-10,0,0"></Switch>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="EndAndExpand"
+                                 VerticalOptions="Center"
+                                 Margin="20">
+                                            <Label Text="Thanh toán đơn hàng" Margin="15,10,0,10" FontSize="15" TextColor="White" FontFamily="FontSemiBold"/>
+                                            <Image Source="ic_next2.png" WidthRequest="20" HeightRequest="20" VerticalOptions="CenterAndExpand" Margin="0,7,0,0"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding StaticCalendarProduct}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                            </AbsoluteLayout>
+
+                    </tabview:TabItem>
+
+
+                </tabview:TabViewControl.ItemSource>
+            </tabview:TabViewControl>
+        </Grid>
+
+
+    </ContentPage.Content>
+</ContentPage>

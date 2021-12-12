@@ -1,0 +1,152 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Fonts\OpenSans-Bold.ttf" />
+    <None Remove="Resources\Fonts\OpenSans-Regular.ttf" />
+    <None Remove="Resources\Fonts\OpenSans-SemiBold.ttf" />
+    <None Remove="Resources\Images\b.jpg" />
+    <None Remove="Resources\Images\ic_basket.png" />
+    <None Remove="Resources\Images\ic_cherry.png" />
+    <None Remove="Resources\Images\ic_fb.png" />
+    <None Remove="Resources\Images\ic_gg.png" />
+    <None Remove="Resources\Images\ic_home.png" />
+    <None Remove="Resources\Images\ic_laptop.png" />
+    <None Remove="Resources\Images\ic_muaHo.png" />
+    <None Remove="Resources\Images\ic_phone.png" />
+    <None Remove="Resources\Images\ic_search.png" />
+    <None Remove="Resources\Images\ic_t-shirt.png" />
+    <None Remove="Resources\Images\ic_tomato.png" />
+    <None Remove="Resources\Images\ic_watches.png" />
+    <None Remove="Resources\Images\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\OpenSans-Bold.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\OpenSans-Regular.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\OpenSans-SemiBold.ttf" />
+    <EmbeddedResource Include="Resources\Images\b.jpg" />
+    <EmbeddedResource Include="Resources\Images\ic_basket.png" />
+    <EmbeddedResource Include="Resources\Images\ic_cherry.png" />
+    <EmbeddedResource Include="Resources\Images\ic_fb.png" />
+    <EmbeddedResource Include="Resources\Images\ic_gg.png" />
+    <EmbeddedResource Include="Resources\Images\ic_home.png" />
+    <EmbeddedResource Include="Resources\Images\ic_laptop.png" />
+    <EmbeddedResource Include="Resources\Images\ic_muaHo.png" />
+    <EmbeddedResource Include="Resources\Images\ic_phone.png" />
+    <EmbeddedResource Include="Resources\Images\ic_search.png" />
+    <EmbeddedResource Include="Resources\Images\ic_t-shirt.png" />
+    <EmbeddedResource Include="Resources\Images\ic_tomato.png" />
+    <EmbeddedResource Include="Resources\Images\ic_watches.png" />
+    <EmbeddedResource Include="Resources\Images\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="C1.Xamarin.Forms.Input" Version="4.8.20212.504" />
+    <PackageReference Include="CarouselView.FormsPlugin" Version="6.0.0" />
+    <PackageReference Include="FormsToolkit" Version="2.0.1" />
+    <PackageReference Include="Plugin.ProXamTabs" Version="1.5.7" />
+    <PackageReference Include="Prism.Forms" Version="8.1.97" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.14" />
+    <PackageReference Include="Xam.Plugin.TabView" Version="1.1.1" />
+    <PackageReference Include="Xam.TabView" Version="1.0.5" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.3.0" />
+    <PackageReference Include="Xamarin.CommunityToolkit.Markup" Version="1.3.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Forms.Chips" Version="1.0.13" />
+    <PackageReference Include="Xamarin.Forms.InputKit" Version="3.7.2" />
+    <PackageReference Include="Xamarin.Plugin.Calendar" Version="1.4.5304" />
+    <PackageReference Include="Xamarin.Rating" Version="1.0.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\CartChildPage\InCartPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CartChildPage\ShippedPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CartChildPage\ShippingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ChildPages\CalendarPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ChildPages\HomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ChildPages\NotifyPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ChildPages\SettingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CartPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DatePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ItemPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MainAppPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MessagePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MyCartPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\OrderPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PopupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SearchPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SplashScreen.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\StorePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\WelcomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Mono.Android">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v12.0\Mono.Android.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\PopupPage.xaml.cs">
+      <DependentUpon>PopupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\StorePage.xaml.cs">
+      <DependentUpon>StorePage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

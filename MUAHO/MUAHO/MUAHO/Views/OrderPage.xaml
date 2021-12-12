@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MUAHO.Views.OrderPage" 
+              xmlns:fRating="clr-namespace:Rating;assembly=Rating"
+             xmlns:local="clr-namespace:MUAHO.Plugins"
+             xmlns:custom="clr-namespace:MUAHO.Views.CustomView"
+             
+             xmlns:chip="clr-namespace:Xamarin.Forms.Chips;assembly=Xamarin.Forms.Chips"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ControlTemplate x:Key="FrameRadioTemplate">
+            <Frame Padding="0" CornerRadius="15" VerticalOptions="Start"
+               HeightRequest="30" WidthRequest="30" HorizontalOptions="Start">
+
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CheckedStates">
+                        <VisualState x:Name="Checked">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="#F2985A"/>
+                                <Setter Property="BorderColor" Value="Transparent"/>
+                            </VisualState.Setters>
+                        </VisualState>
+
+                        <VisualState x:Name="Unchecked">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="White"/>
+                                <Setter Property="BorderColor" Value="#40929292"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                    
+                </VisualStateManager.VisualStateGroups>
+
+                <Grid Margin="4" WidthRequest="100">
+                    <ContentPresenter/>
+                </Grid>
+            </Frame>
+        </ControlTemplate>
+        
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            
+       
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All">
+            <Frame HeightRequest="250" CornerRadius="20" Margin="0,-20,0,0"
+                   BackgroundColor="{StaticResource ButtonSmallColor3}"
+                   Padding="0">
+                <AbsoluteLayout>
+                    <Image Source="ic_tea.png" Aspect="AspectFill"
+                           AbsoluteLayout.LayoutBounds="0,0,1,1"
+                           AbsoluteLayout.LayoutFlags="All"/>
+                    <Frame Margin="-20,0,20,0"
+                           Padding="0"
+                           BackgroundColor="White"
+                           CornerRadius="10"
+                           AbsoluteLayout.LayoutBounds="1,0.2,120,40"
+                           AbsoluteLayout.LayoutFlags="PositionProportional"
+                           HorizontalOptions="End">
+                        <StackLayout Padding="10" Orientation="Horizontal">
+                            <Label Text="Hủy đơn" TextColor="{StaticResource MainTextColor}" FontFamily="FontBold"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="StartAndExpand"/>
+                            <Image Source="ic_delete2.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="End"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                           CornerRadius="10"
+                           Padding="5"
+                            AbsoluteLayout.LayoutBounds="20,40,35,35"
+                           AbsoluteLayout.LayoutFlags="None"
+                           >
+                        <Frame.GestureRecognizers>
+                          
+                        </Frame.GestureRecognizers>
+                        <Image Source="ic_back.png"/>
+                    </Frame>
+                </AbsoluteLayout>
+
+
+            </Frame>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                        <RowDefinition Height="10*"/>
+                    </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Grid.Column="0">
+                    <StackLayout Orientation="Horizontal" Padding="20,0,20,0">
+                        <Label Text="Trà thảo mộc Mikita" TextColor="{StaticResource MainTextColor}" FontSize="19" FontFamily="FontBold" Margin="0,10,0,10"/>
+                        <Label Text="14K/đơn" 
+                                TextColor="{StaticResource ButtonBigColor}"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="EndAndExpand"
+                                FontFamily="FontBold"
+                                FontSize="18"
+                                LineHeight="0.5"
+                                />
+                    </StackLayout>
+                    <StackLayout Margin="20,0,20,0">
+                        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand">
+                            <Image Source="ic_delete2.png" WidthRequest="15" HeightRequest="15" HorizontalOptions="End"/>
+                            <Label Text="Mikita Food And Drink" TextColor="{StaticResource MainTextColor}" FontSize="15" FontFamily="FontSemiBold"/>
+                        </StackLayout>
+                       
+                        <Label Text="76 Nguyễn Trí Thanh, Phước Ninh, Hải Châu, Đà Nẵng" 
+                                TextColor="{StaticResource MainTextColor}"
+                                FontFamily="FontRegular"
+                                FontSize="12"
+                                VerticalOptions="CenterAndExpand"
+                                />
+                    </StackLayout>
+                </StackLayout>
+                <ScrollView Grid.Row="1" Scrolled="ScrollView_Scrolled" Padding="0,0,0,100">
+                    <Grid RowDefinitions="Auto,*,*">
+                        
+                        <StackLayout Grid.Row="0">
+                            <StackLayout x:Name="layoutStatic" IsVisible="True">
+                                <StackLayout Orientation="Horizontal" Padding="20,0,20,0">
+                                    <Label Text="Ngày giao" TextColor="{StaticResource PlaceholderColor}" FontSize="17" FontFamily="FontBold" Margin="0,10,0,10"/>
+                                    <Label Text="Thay đổi" 
+                                   TextColor="{StaticResource ButtonBigColor}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="EndAndExpand"
+                                   FontFamily="FontSemiBold"
+                                   FontSize="13"
+                                   LineHeight="0.5"
+                                   >
+                                        <Label.GestureRecognizers>
+
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </StackLayout>
+                                <Grid Padding="20,0,20,10"
+                              HorizontalOptions="Center"
+                              ColumnSpacing="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="40"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <RadioButton
+                                x:Name="T2"
+                                Grid.Column="0"
+                                GroupName="T2"
+                                TextColor="White"
+                                IsChecked="True"
+                                        IsEnabled="False"
+                                CheckedChanged="OnCheckedChange"
+                                ControlTemplate="{StaticResource FrameRadioTemplate}">
+                                        <RadioButton.GestureRecognizers>
+                                           
+                                        </RadioButton.GestureRecognizers>
+                                        <RadioButton.Content>
+                                            <Label Text="T2" FontSize="15"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                        </RadioButton.Content>
+                                    </RadioButton>
+
+                                    <RadioButton 
+
+                                x:Name="T3"
+                                Grid.Column="1"
+                                GroupName="T3"
+                                        IsEnabled="False"
+                                CheckedChanged="OnCheckedChange"
+                                ControlTemplate="{StaticResource FrameRadioTemplate}">
+                                        <RadioButton.GestureRecognizers>
+                                            
+                                        </RadioButton.GestureRecognizers>
+                                        <RadioButton.Content>
+                                            <Label Text="T3" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                        </RadioButton.Content>
+                                    </RadioButton>
+
+                                    <RadioButton
+                                         x:Name="T4"
+                                Grid.Column="2"
+                                GroupName="T4"
+                                TextColor="White"
+                                        IsEnabled="False"
+                                IsChecked="True"
+                                CheckedChanged="OnCheckedChange"
+                                ControlTemplate="{StaticResource FrameRadioTemplate}">
+                                        <RadioButton.GestureRecognizers>
+                                           
+                                        </RadioButton.GestureRecognizers>
+                                        <RadioButton.Content>
+                                            <Label Text="T4" FontSize="15"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                        </RadioButton.Content>
+                                    </RadioButton>
+
+                                    <RadioButton 
+                                         x:Name="T5"
+                                Grid.Column="3"
+                                        IsEnabled="False"
+                                GroupName="T5"
+                                CheckedChanged="OnCheckedChange"
+                                ControlTemplate="{StaticResource FrameRadioTemplate}">
+                                        <RadioButton.GestureRecognizers>
+                                            
+                                        </RadioButton.GestureRecognizers>
+                                        <RadioButton.Content>
+                                            <Label Text="T5" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                        </RadioButton.Content>
+                                    </RadioButton>
+
+                                    <RadioButton
+                                         x:Name="T6"
+                                Grid.Column="4"
+                                GroupName="T6"
+                                        IsEnabled="False"
+                                TextColor="White"
+                                IsChecked="True"
+                                CheckedChanged="OnCheckedChange"
+                                ControlTemplate="{StaticResource FrameRadioTemplate}">
+                                        <RadioButton.GestureRecognizers>
+                                            
+                                        </RadioButton.GestureRecognizers>
+                                        <RadioButton.Content>
+                                            <Label Text="T6" FontSize="15"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                        </RadioButton.Content>
+                                    </RadioButton>
+
+                                    <RadioButton 
+                                        x:Name="T7"
+                                        IsEnabled="False"
+                                Grid.Column="5"
+                                GroupName="T7"
+                                CheckedChanged="OnCheckedChange"
+                                ControlTemplate="{StaticResource FrameRadioTemplate}">
+                                        <RadioButton.GestureRecognizers>
+                                            
+                                        </RadioButton.GestureRecognizers>
+                                        <RadioButton.Content>
+                                            <Label Text="T7" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                        </RadioButton.Content>
+                                    </RadioButton>
+
+                                    <RadioButton
+                                Grid.Column="6"
+                                GroupName="CN"     
+                                        IsEnabled="False"
+                                CheckedChanged="OnCheckedChange"
+                                ControlTemplate="{StaticResource FrameRadioTemplate}">
+                                        <RadioButton.GestureRecognizers>
+                                           
+                                        </RadioButton.GestureRecognizers>
+                                        <RadioButton.Content>
+                                            <Label Text="CN" FontSize="15"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                        </RadioButton.Content>
+                                    </RadioButton>
+
+
+
+                                </Grid>
+                                <StackLayout Orientation="Horizontal" Margin="20,0,20,0">
+
+                                    <Frame
+                           Padding="0"
+                           BackgroundColor="{StaticResource ButtonSmallColor2}"
+                           CornerRadius="10"
+                           HorizontalOptions="Start">
+                                        <StackLayout Padding="10,0,10,0"
+                                              WidthRequest="130"
+                                             Orientation="Horizontal">
+                                            <custom:CustomDatePicker 
+                                        HorizontalOptions="StartAndExpand"
+                                        TextColor="White"
+                                        FontSize="15" Margin="0,0,10,0" InputTransparent="True">
+
+                                            </custom:CustomDatePicker>
+                                            <Image Source="ic_calendar1.png" WidthRequest="20" HeightRequest="20" HorizontalOptions="End"/>
+                                        </StackLayout>
+                                    </Frame>
+                                    <Image Source="ic_next.png" WidthRequest="20" HorizontalOptions="CenterAndExpand"/>
+
+                                    <Frame
+                           Padding="0"
+                           BackgroundColor="{StaticResource ButtonSmallColor2}"
+                           CornerRadius="10"
+                           HorizontalOptions="End">
+                                        <StackLayout Padding="10,0,10,0" 
+                                              WidthRequest="130"
+                                             Orientation="Horizontal">
+                                            <custom:CustomDatePicker 
+                                        HorizontalOptions="StartAndExpand"
+                                        TextColor="White"
+                                        FontSize="15" Margin="0,0,10,0" InputTransparent="True">
+
+                                            </custom:CustomDatePicker>
+                                            <Image Source="ic_calendar1.png" WidthRequest="20" HeightRequest="20" HorizontalOptions="End"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout x:Name="layoutDynamic" IsVisible="False">
+                                <StackLayout Orientation="Horizontal" Padding="20,0,20,0">
+                                    <Label Text="Ngày giao" TextColor="{StaticResource PlaceholderColor}" FontSize="17" FontFamily="FontBold" Margin="0,10,0,10"/>
+                                    <Label Text="Thay đổi" 
+                                   TextColor="{StaticResource ButtonBigColor}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="EndAndExpand"
+                                   FontFamily="FontSemiBold"
+                                   FontSize="13"
+                                   LineHeight="0.5"
+                                   >
+                                        <Label.GestureRecognizers>
+
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </StackLayout>
+                                <ScrollView Orientation="Vertical">
+                                    <Grid x:Name="gridDay" Padding="20,10,20,10" ColumnSpacing="18" RowSpacing="8"/>
+                                </ScrollView>
+
+
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Grid.Row="1">
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal" Padding="20,0,20,0">
+                                    <Label Text="Vào lúc" TextColor="{StaticResource PlaceholderColor}" FontSize="17" FontFamily="FontBold" Margin="0,10,0,10"/>
+                                    <Label Text="Thay đổi" 
+                                   TextColor="{StaticResource ButtonBigColor}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="EndAndExpand"
+                                   FontFamily="FontSemiBold"
+                                   FontSize="13"
+                                   LineHeight="0.5"
+                                   >
+                                        <Label.GestureRecognizers>
+
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Margin="20,0,20,0">
+                                    <Frame
+                           Padding="0"
+                           BackgroundColor="{StaticResource ButtonSmallColor2}"
+                           CornerRadius="10"
+                           HorizontalOptions="End">
+                                        <StackLayout Padding="10,0,10,0" 
+                                              WidthRequest="130" 
+                                             
+                                             Orientation="Horizontal">
+                                            <custom:CustomTimePicker 
+                                        HorizontalOptions="StartAndExpand"
+                                        TextColor="White"
+                                        FontSize="15" Margin="0,0,10,0" InputTransparent="True">
+                                            </custom:CustomTimePicker>
+                                            <Image Source="ic_clock2.png" WidthRequest="20" HeightRequest="20" HorizontalOptions="End"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Grid.Row="2" Margin="20,0,20,0">
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal" >
+                                    <Label Text="Ghi chú" TextColor="{StaticResource PlaceholderColor}" FontSize="17" FontFamily="FontBold" Margin="0,10,0,10"/>
+                                    <Label Text="Chỉnh sửa" 
+                                   TextColor="{StaticResource ButtonBigColor}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="EndAndExpand"
+                                   FontFamily="FontSemiBold"
+                                   FontSize="13"
+                                           
+                                   LineHeight="0.5"
+                                   >
+                                        <Label.GestureRecognizers>
+
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </StackLayout>
+                                <Frame
+                           BackgroundColor="#20929292"
+                           CornerRadius="10"
+                                    
+                            Padding="10,10,10,10">
+                                    
+                                    <custom:CustomEntry
+                                        
+                                        Text="Riêng ngày thứ 7 giao vào 9:00" 
+                                   TextColor="{StaticResource ButtonSmallColor2}"
+                                   FontSize="15"
+                                   />
+                                </Frame>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                </ScrollView>
+                
+            </Grid>
+        </StackLayout>
+            <StackLayout 
+                BackgroundColor="#1e000000"
+                AbsoluteLayout.LayoutBounds="0,1,1,100"
+                AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                Padding="20,20,20,0"
+                x:Name="layoutButton" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button 
+                            Text="Hoàn giao"
+                            CornerRadius="20"
+                            TextTransform="None"
+                            TextColor="{StaticResource ButtonBigColor}"
+                            FontSize="15"
+                            BorderColor="{StaticResource ButtonBigColor}"
+                            BorderWidth="1.5"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            HeightRequest="60"
+                            FontFamily="FonSemiBold"
+                            BackgroundColor="White"/>
+                    <Button 
+                            Text="Lưu thay đổi"
+                            CornerRadius="20"
+                            TextTransform="None"
+                            TextColor="White"
+                            FontSize="15"
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            FontFamily="FontSemiBold"
+                            BackgroundColor="{StaticResource ButtonBigColor}"/>
+                </Grid>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MUAHO.App">
+    <Application.Resources>
+        <Thickness x:Key="PageMargin">20</Thickness>
+        
+        <!--Color-->
+        <Color x:Key="BgColor">#F6EADF</Color>
+        <Color x:Key="MainTextColor">#4E4E4E</Color>
+        <Color x:Key="ButtonBigColor">#FA7921</Color>
+        <Color x:Key="ButtonSmallColor">#80F2985A</Color>
+        <Color x:Key="ButtonSmallColor3">#40F2985A</Color>
+        <Color x:Key="ButtonSmallColor2">#F2985A</Color>
+        <Color x:Key="TitlePageColor">#DF5A00</Color>
+        <Color x:Key="SubTitleColor">#DF5A00</Color>
+        <Color x:Key="PlaceholderColor">#929292</Color>
+        <Color x:Key="BgEntry">#cc929292</Color>
+    </Application.Resources>
+</Application>

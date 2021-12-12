@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AbsoluteLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:cartchildviewmodel="clr-namespace:MUAHO.ViewModels.CartChildViewModel"
+       
+                x:Class="MUAHO.Views.CartChildPage.InCartPage"
+             VerticalOptions="FillAndExpand">
+    <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+                 AbsoluteLayout.LayoutFlags="All">
+        <StackLayout.Resources>
+            <ControlTemplate x:Key="ImageRadioTemplate">
+                <Image  VerticalOptions="Start"
+               HeightRequest="25" WidthRequest="25" HorizontalOptions="Start" Aspect="Fill">
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CheckedStates">
+                            <VisualState x:Name="Checked">
+                                <VisualState.Setters>
+                                    <Setter Property="Source" Value="ic_check.png"/>
+                                </VisualState.Setters>
+                            </VisualState>
+
+                            <VisualState x:Name="Unchecked">
+                                <VisualState.Setters>
+                                    <Setter Property="Source" Value="ic_uncheck.png"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+
+                    </VisualStateManager.VisualStateGroups>
+
+
+                </Image>
+            </ControlTemplate>
+
+        </StackLayout.Resources>
+        <StackLayout Orientation="Horizontal"
+                        Padding="20,0,10,10">
+            <StackLayout HorizontalOptions="StartAndExpand">
+                <Label Text="VinMart" FontSize="16" TextColor="{StaticResource ButtonBigColor}"
+                                   FontFamily="FontBold"/>
+                <Label Text="245, Định Công, Hoàng Mai, Hà Nội" FontFamily="FontSemiBold" FontSize="13"/>
+            </StackLayout>
+           
+        </StackLayout>
+        <ListView x:Name="listItemInCart" RowHeight="140" SelectionMode="None"
+                                  SeparatorVisibility="None"
+                                  Margin="0,0,0,20"
+                                  ItemAppearing="listItemInCart_ItemAppearing"
+                                  ItemsSource="{Binding ItemInMyCarts}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout  x:Name="ItemCart"
+                                      Padding="20"
+                                      Orientation="Horizontal" Spacing="15" Opacity="1">
+                            <AbsoluteLayout>
+                                <StackLayout Orientation="Horizontal"
+                                                         AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                                         AbsoluteLayout.LayoutFlags="All">
+                                    <Frame WidthRequest="100" HeightRequest="100" HorizontalOptions="Start" Padding="0"
+                                                           HasShadow="False"
+                                                           CornerRadius="20" BackgroundColor="#F2F2F2">
+                                        <StackLayout Padding="5">
+                                            <Image Source="{Binding ImageItem}" VerticalOptions="StartAndExpand" HeightRequest="60"/>
+                                            <Label Text="{Binding PriceItem}" FontFamily="FontBold" HorizontalOptions="Center"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                                <ImageButton Source="ic_uncheck.png"
+                                                             StyleId="0"
+                                                             ClassId="{Binding NameItem}"
+                                                             AbsoluteLayout.LayoutBounds="5,5,25,25"
+                                                             AbsoluteLayout.LayoutFlags="None"
+                                                             Clicked="ImageButton_Clicked"
+                                                             />
+
+                            </AbsoluteLayout>
+                            <StackLayout  HorizontalOptions="StartAndExpand">
+                                <Label Text="{Binding NameItem}" FontSize="15" FontFamily="FontRegular"/>
+                                <Label Text="{Binding Total, StringFormat='+{0} Vnd' }" FontSize="16" FontFamily="FontBold"
+                                                       TextColor="{StaticResource MainTextColor}"/>
+                                <StackLayout Orientation="Horizontal"
+                                                     VerticalOptions="EndAndExpand"
+                                                     IsVisible="True"  Spacing="10">
+                                    <ImageButton
+                                                WidthRequest="25" 
+                                                CornerRadius="5"
+                                                HeightRequest="25"
+                                                Padding="5"
+                                                Source="ic_sub.png"
+                                                HorizontalOptions ="Start"
+                                                BackgroundColor="{StaticResource ButtonSmallColor3}"
+                                                Command="{Binding BindingContext.SubAmount, Source={x:Reference listItemInCart}}"
+                                                CommandParameter="{Binding Source={x:Reference ItemCart}, Path=BindingContext}"
+                                                />
+                                    <Label Text="{Binding AmountItem}" HorizontalOptions="Center"
+                                                   VerticalOptions="Center"
+                                                   TextColor="{StaticResource ButtonBigColor}"
+                                                   FontSize="14"
+                                                   FontFamily="FontBold"/>
+                                    <ImageButton
+                                                WidthRequest="25" 
+                                                CornerRadius="5"
+                                                HeightRequest="25"
+                                                Padding="5"
+                                                Source="ic_plus.png"
+                                                HorizontalOptions="End"
+                                                BackgroundColor="{StaticResource ButtonSmallColor3}"
+                                                Command="{Binding BindingContext.AddAmount, Source={x:Reference listItemInCart}}"
+                                                CommandParameter="{Binding Source={x:Reference ItemCart}, Path=BindingContext}"
+                                                />
+                                </StackLayout>
+
+                            </StackLayout>
+                            <ImageButton
+                                                WidthRequest="30" 
+                                                CornerRadius="5"
+                                                HeightRequest="30"
+                                                Padding="10"
+                                                Source="ic_close.png"
+                                                HorizontalOptions ="End"
+                                                    VerticalOptions="Start"
+                                                BackgroundColor="{StaticResource ButtonSmallColor3}"
+                                                />
+                        </StackLayout>
+
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+    <Frame
+                                x:Name="bigFrame"
+                               AbsoluteLayout.LayoutBounds="0,0.96,1,125"  
+                               BackgroundColor="#F6EADF"
+                               Margin="20,0,20,0"
+                               CornerRadius="25"
+                               Padding="0"
+                               AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional">
+        <Frame.Content>
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Tổng hóa đơn:" Margin="15,10,10,10" FontSize="13" FontFamily="FontSemiBold"/>
+                    <Label Text="{Binding TotalMoney, StringFormat='{0} Vnđ'}" Margin="15,10,0,10" FontSize="18" TextColor="{StaticResource ButtonBigColor}"
+                                               FontFamily="FontBold" 
+                                               HorizontalOptions="EndAndExpand"/>
+                    <ImageButton 
+                                                     Source="ic_arrow2.png" WidthRequest="10" HeightRequest="10" BackgroundColor="Transparent"
+                                                     HorizontalOptions="End" Margin="0,0,10,0"/>
+                </StackLayout>
+
+            </StackLayout>
+        </Frame.Content>
+
+    </Frame>
+    <Frame 
+                               x:Name="smallFrame"
+                               BackgroundColor="{StaticResource ButtonBigColor}" Padding="0"
+                               AbsoluteLayout.LayoutBounds="0,0.96,1,85" 
+                               Margin="20,0,20,0"
+                               AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                               CornerRadius="25">
+        <StackLayout Orientation="Horizontal">
+            <StackLayout
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="CenterAndExpand">
+                <Label Text="Tất cả" Margin="25,10,10,10" FontSize="13" TextColor="White"/>
+                <Switch Margin="0,-10,0,0"></Switch>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="EndAndExpand"
+                                 VerticalOptions="Center"
+                                 Margin="20">
+                <Label Text="Thanh toán đơn hàng" Margin="15,10,0,10" FontSize="15" TextColor="White" FontFamily="FontSemiBold"/>
+                <Image Source="ic_next2.png" WidthRequest="20" HeightRequest="20" VerticalOptions="CenterAndExpand" Margin="0,7,0,0"/>
+            </StackLayout>
+        </StackLayout>
+        <Frame.GestureRecognizers>
+            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+        </Frame.GestureRecognizers>
+    </Frame>
+</AbsoluteLayout>

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:local="clr-namespace:MUAHO.Plugins"
+             x:Class="MUAHO.Views.LoginPage"
+             BackgroundColor="{StaticResource BgColor}">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+                <StackLayout
+                    Padding="20,0,20,0"
+                    AbsoluteLayout.LayoutBounds="1,0.4,1,1"
+                    AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" Spacing="10">
+                    <Label Text="Bạn ơi," FontSize="16" FontFamily="FontSemiBold" TextColor="{StaticResource PlaceholderColor}"/>
+                    <Label Text="Đăng nhập ngay thôi!" FontSize="18" FontFamily="FontBold" TextColor="{StaticResource ButtonBigColor}"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Chưa có tài khoản?" FontSize="16" FontFamily="FontSemiBold" TextColor="{StaticResource PlaceholderColor}"/>
+                        <Label Text="Đăng ký" FontSize="16" FontFamily="FontBold" TextColor="{StaticResource MainTextColor}" TextDecorations="Underline"/>
+                        <Label Text="liền!" FontSize="16" FontFamily="FontSemiBold" TextColor="{StaticResource PlaceholderColor}"/>
+                    </StackLayout>
+                    <Frame 
+                          Visual="{OnPlatform Default=Material, iOS=Default}"
+                          Margin="0,30,0,5"
+                          BackgroundColor="{StaticResource ButtonSmallColor2}"
+                          Padding="18"
+                           CornerRadius="20">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer  Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="CenterAndExpand">
+                            <Image Source="{local:ImageEmbedResource MUAHO.Resources.Images.ic_phone.png}" HeightRequest="20" />
+                            <Label Text=" Đăng nhập bằng số điện thoại" FontSize="15" FontFamily="FontSemiBold" TextColor="White"/>
+
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                            Margin="0,5,0,5"
+                            BorderColor="{StaticResource ButtonSmallColor2}"
+                            Padding="18"
+                           
+                            CornerRadius="20">
+                        <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="CenterAndExpand">
+                            <Image Source="{local:ImageEmbedResource MUAHO.Resources.Images.ic_fb.png}" HeightRequest="20" />
+                            <Label Text=" Đăng nhập bằng Facebook" FontSize="15" FontFamily="FontSemiBold" TextColor="{StaticResource MainTextColor}"/>
+
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                           Margin="0,5,0,5" 
+                            BorderColor="{StaticResource ButtonSmallColor2}"
+                          Padding="18"
+                           CornerRadius="20">
+                        <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="CenterAndExpand">
+                            <Image Source="{local:ImageEmbedResource MUAHO.Resources.Images.ic_gg.png}" HeightRequest="20" />
+                            <Label Text=" Đăng nhập bằng Google" FontSize="15" FontFamily="FontSemiBold" TextColor="{StaticResource MainTextColor}"/>
+
+                        </StackLayout>
+                    </Frame>
+                   
+                </StackLayout>
+            <Label x:Name="lblSkip" Text="Bỏ qua" FontSize="15" FontFamily="FontSemiBold" TextColor="{StaticResource MainTextColor}"
+                           Margin="0,20,0,0"
+                   AbsoluteLayout.LayoutBounds="0.5,1,100,60"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                           HorizontalOptions="CenterAndExpand">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                </Label.GestureRecognizers>
+
+            </Label>
+            <Image Source="{local:ImageEmbedResource MUAHO.Resources.Images.ic_muaHo.png}"
+                       AbsoluteLayout.LayoutBounds="-0.15,50,200,200"
+                       AbsoluteLayout.LayoutFlags="XProportional">
+                    <Image.GestureRecognizers >
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+
+                <Frame AbsoluteLayout.LayoutBounds="0.6,-15,110,110"
+                   AbsoluteLayout.LayoutFlags="None,XProportional"
+                   HasShadow="False"
+                   BackgroundColor="{StaticResource ButtonSmallColor}"
+                   CornerRadius="90">
+                        <Frame.Content>
+                            <Image Source="{local:ImageEmbedResource MUAHO.Resources.Images.ic_watches.png}" />
+                        </Frame.Content>
+                    </Frame>
+                    
+                    <Frame AbsoluteLayout.LayoutBounds="1,0.15,80,80"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                   HasShadow="False"
+                   BackgroundColor="{StaticResource ButtonSmallColor}"
+                   CornerRadius="90">
+                        <Frame.Content>
+                            <Image Source="{local:ImageEmbedResource MUAHO.Resources.Images.ic_laptop.png}" />
+                        </Frame.Content>
+                    </Frame>
+                    
+                    <Frame AbsoluteLayout.LayoutBounds="0.6,0.3,80,80"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                   HasShadow="False"
+                   BackgroundColor="{StaticResource ButtonSmallColor}"
+                   CornerRadius="90">
+                        <Frame.Content>
+                            <Image Source="{local:ImageEmbedResource MUAHO.Resources.Images.ic_tomato.png}" />
+                        </Frame.Content>
+                    </Frame>
+                
+                    
+
+
+                </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
